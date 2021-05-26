@@ -13,14 +13,14 @@ export function request(config){
      },err=>{
          console.log(err)
      })
-         
+
      instance1.interceptors.response.use(res=>{
          return res.data
      },err=>{
          console.log(err)
      })
 
-    return config
+    return instance1(config)
 }
 
 

@@ -25,8 +25,8 @@
   </div>
 </template>
 <script>
-import TabBar from '../common/TabBar/TabBar'
-import TabBarItem from '../common/TabBar/TabBarItem'
+import TabBar from '../../components/common/tabBar/TabBar'
+import TabBarItem from '../../components/common/tabBar/TabBarItem'
 
     export default {
         name:'MainTabBar',
@@ -34,7 +34,7 @@ import TabBarItem from '../common/TabBar/TabBarItem'
             TabBar,
             TabBarItem
         }
-        
+
 
 
 
@@ -47,7 +47,7 @@ import TabBarItem from '../common/TabBar/TabBarItem'
 <style>
 
 
- 
+
 
 
 
