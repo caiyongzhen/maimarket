@@ -1,7 +1,7 @@
 <template>
   <div id="swiper">
      <div class="swiper_item">
-        <slot></slot>
+       <slot name="img"></slot>
      </div>
   </div>
 </template>
@@ -36,14 +36,27 @@ export default{
 
 </script>
 
-<style scoped>
-   #swiper{
-     position: absolute;
-   }
-  .swiper_item{
-     float: left;
-     width: 200px;
-     height: 200px;
+<style>
+  #swiper{
+     position: relative;
+
+
 
   }
+  .swiper_item {
+    clear: fixed;
+  }
+
+
+
+  .swiper_item img{
+     position: absolute;
+     float: left;
+     top: 0;
+     left: 0;
+     width:100%;
+     height: 200px;
+
+
+       }
 </style>
