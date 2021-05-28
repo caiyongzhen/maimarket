@@ -1,7 +1,7 @@
 <template>
   <div id="h_swiper">
     <swiper v-for="item in banners">
-          <swiper-item slot="img">
+          <swiper-item>
             <a :href="item.link" class="swiper_a">
               <img :src="item.image" alt="">
             </a>
@@ -33,6 +33,14 @@ import {Swiper,SwiperItem} from '../../../components/common/swiper/index'
 
 
 </script>
-<style>
+<style scoped>
+
+
+
+
+
+
+
+
 
 </style>

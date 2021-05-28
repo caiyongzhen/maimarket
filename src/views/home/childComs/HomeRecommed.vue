@@ -34,6 +34,11 @@ export default {
    display: flex;
    text-align: center;
    margin-top: 4px;
+   font-size: 14px;
+   padding: 10px 0 26px;
+   border-bottom: 8px solid #eee;
+
+
  }
 
  .recommed_item{
@@ -43,6 +48,7 @@ export default {
  .recommed_item img{
    width: 70px;
    height: 70px;
+   margin-bottom: 4px;
  }
 
 </style>

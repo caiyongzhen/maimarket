@@ -1,5 +1,5 @@
 <template>
-  <div class="slide">
+  <div id="slide">
     <slot></slot>
   </div>
 </template>
@@ -16,14 +16,16 @@ export default {
 
 
 </script>
-<style>
- .slide {
+<style scoped>
+ #slide {
    width: 100%;
+
 
  }
 
 .slide img {
-   width: 100%;
+
+     width:100%;
 
 }
 

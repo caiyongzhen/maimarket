@@ -1,12 +1,12 @@
 <template>
   <div id="swiper">
      <div class="swiper_item">
-       <slot name="img"></slot>
+        <slot></slot>
      </div>
   </div>
 </template>
 
-<script>
+<script scoped>
 export default{
   name:'Swiper',
   props:{
@@ -38,16 +38,11 @@ export default{
 
 <style>
   #swiper{
-     position: relative;
-
+    position: fixed;
+    overflow: hidden;
 
 
   }
-  .swiper_item {
-    clear: fixed;
-  }
-
-
 
   .swiper_item img{
      position: absolute;
@@ -56,6 +51,7 @@ export default{
      left: 0;
      width:100%;
      height: 200px;
+     padding: 200px 0 200px;
 
 
        }
