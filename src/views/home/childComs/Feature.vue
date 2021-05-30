@@ -26,6 +26,7 @@ export default {
 <style scoped>
 .feature img{
   width: 100%;
+  height: 300px;
 }
 
 
