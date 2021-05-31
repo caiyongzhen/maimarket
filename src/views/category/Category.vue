@@ -1,7 +1,6 @@
 <template>
-    <div>
-      <h2>分类</h2>
-      <ul class="category">
+    <div class="category">
+      <ul class="category_ul">
         <li>ni1</li>
         <li>ni2</li>
         <li>ni3</li>
@@ -103,23 +102,35 @@
         <li>ni99</li>
         <li>ni100</li>
       </ul>
+      <h2>分类</h2>
     </div>
 </template>
 
 <script>
+import BScroll from 'better-scroll'
 export default{
     name:'Category',
     data(){
         return {
-
+          scroll:null
         }
     },
     methods:{
 
+    },
+    mounted(){
 
+     this.scroll=new BScroll(document.querySelector('.category'),{
+            probeType:2,
+            pullUpLoad:true
+      });
 
-
-
+      this.scroll.on('scroll',(position)=>{
+          console.log(position)
+      })
+     this.scroll.on('pullingUp',()=>{
+            console.log('下载更多')
+     })
 
     }
 
@@ -135,9 +146,10 @@ export default{
 </script>
 <style scoped>
   .category{
-    height: 100px;
+    height: 200px;
     background-color: red;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    overflow: hidden;
   }
 
 

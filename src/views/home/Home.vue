@@ -1,11 +1,13 @@
 <template>
     <div id="home">
       <nav-bar class="nav_conter"><div slot="conter">购物街</div></nav-bar>
-      <home-swiper :banners=banners></home-swiper>
-      <home-recommed :recommend=recommend></home-recommed>
-      <feature></feature>
-      <tab-control class="tab_control" :title="['流行','新款','精选']" @tabContClick='tabContClick'></tab-control>
-      <goods-list :goods="goods['pops'].list"></goods-list>
+      <scroll>
+        <home-swiper :banners=banners></home-swiper>
+        <home-recommed :recommend=recommend></home-recommed>
+        <feature></feature>
+        <tab-control class="tab_control" :title="['流行','新款','精选']" @tabContClick='tabContClick'></tab-control>
+        <goods-list :goods="goods['pops'].list"></goods-list>
+      </scroll>
     </div>
 </template>
 
@@ -15,6 +17,7 @@ import HomeSwiper from './childComs/HomeSwiper'
 import HomeRecommed from './childComs/HomeRecommed'
 import Feature from './childComs/Feature'
 import GoodsList from '../../components/content/goosList/GoodsList'
+import Scroll from '../../components/common/scroll/Scroll'
 
 import {getHomeContent,getHomeGoods,getGoodsList,getGoodsNew,getGoodsSell} from '../../network/home'
 
@@ -29,7 +32,8 @@ export default{
    HomeRecommed,
    Feature,
    TabControl,
-   GoodsList
+   GoodsList,
+   Scroll
 
 
 
