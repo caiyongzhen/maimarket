@@ -1,5 +1,5 @@
 <template>
-    <div class="category">
+    <div class="wrapper" ref="wrapper">
       <ul class="category_ul">
         <li>ni1</li>
         <li>ni2</li>
@@ -120,17 +120,13 @@ export default{
     },
     mounted(){
 
-     this.scroll=new BScroll(document.querySelector('.category'),{
-            probeType:2,
-            pullUpLoad:true
-      });
+      this.scroll=new BScroll(this.$refs.wrapper,{
+              probeType:2
+      })
 
       this.scroll.on('scroll',(position)=>{
-          console.log(position)
+           console.log(position)
       })
-     this.scroll.on('pullingUp',()=>{
-            console.log('下载更多')
-     })
 
     }
 
@@ -145,7 +141,7 @@ export default{
 
 </script>
 <style scoped>
-  .category{
+  .wrapper{
     height: 200px;
     background-color: red;
     /* overflow-y: scroll; */

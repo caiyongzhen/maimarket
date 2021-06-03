@@ -1,13 +1,15 @@
 <template>
     <div id="home">
       <nav-bar class="nav_conter"><div slot="conter">购物街</div></nav-bar>
-      <scroll>
+      <scroll class="content" ref="scroll" :probe-type='2' @scroll="scrollBtn">
         <home-swiper :banners=banners></home-swiper>
         <home-recommed :recommend=recommend></home-recommed>
         <feature></feature>
-        <tab-control class="tab_control" :title="['流行','新款','精选']" @tabContClick='tabContClick'></tab-control>
+        <tab-control class="tab_control" :title="['流行','新款','精选']"></tab-control>
         <goods-list :goods="goods['pops'].list"></goods-list>
       </scroll>
+
+      <back-top @click.native="backClick" v-show="isBackTop"></back-top>
     </div>
 </template>
 
@@ -22,6 +24,7 @@ import Scroll from '../../components/common/scroll/Scroll'
 import {getHomeContent,getHomeGoods,getGoodsList,getGoodsNew,getGoodsSell} from '../../network/home'
 
 import TabControl from '../../components/content/tabControl/TabControl'
+import BackTop from '../../components/content/backtop/BackTop.vue'
 
 
 export default{
@@ -33,7 +36,8 @@ export default{
    Feature,
    TabControl,
    GoodsList,
-   Scroll
+   Scroll,
+   BackTop
 
 
 
@@ -48,7 +52,11 @@ export default{
         'new':{page:0,list:[]},
         'sell':{page:0,list:[]},
       },
-      curryIndex:0
+      curryIndex:0,
+      isBackTop:false
+
+
+
      }
  },
  created(){
@@ -81,7 +89,7 @@ export default{
      getGoodsList().then(res=>{
        this.goods['pops'].list.push(...res.data.banner.list)
    })
-   }
+   },
   //  ,
   //  getGoodsNew(){
   //    getGoodsNew().then(res=>{
@@ -99,21 +107,29 @@ export default{
 
   //  事件监听方法
 
-   ,tabContClick(index){
-     console.log(index)
-     switch(index){
-       case 0:
-       this.curryIndex='pops'
-       break
-       case 1:
-        this.curryIndex='new'
-       break
-       case 2:
-        this.curryIndex='sell'
-       break
-     }
-   }
+  //  ,tabContClick(index){
+    //  console.log(index)
+    //  switch(index){
+    //    case 0:
+    //    this.curryIndex='pops'
+    //    break
+    //    case 1:
+    //     this.curryIndex='new'
+    //    break
+    //    case 2:
+    //     this.curryIndex='sell'
+    //    break
+    //  }
+  //  }
+     backClick(){
+       console.log('----')
+       this.$refs.scroll.scrollTo(0,0)
+     },
 
+     scrollBtn(position){
+       console.log(position)
+       this.isBackTop=(-position.y)>300
+     }
 
 
 
@@ -133,32 +149,43 @@ export default{
 
 
 </script>
-<style>
+<style scoped>
 @import '../../assets/css/base.css';
 
 #home {
-  padding-top:44px
+  padding-top:44px;
+  position: relative;
+  height: 100vh;
 }
 
 
 
-.nav_conter{
+/* .nav_conter{
   position: fixed;
-  top: 0;
+  top: 44px;
   left: 0;
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
   text-align: center;
   color: #fff;
   background-color:#ff8198;
   box-shadow: 0 -1px 1px rgba(100,100,100,.1);
 
-}
+} */
 
 .tab_control {
-  position:sticky;
   top: 44px;
   background-color: #eee;
   z-index: 9;
 }
 
+.content{
+   position: absolute;
+   top: 44px;
+   bottom: 49px;
+   left: 0;
+   right: 0;
 
+}
 </style>

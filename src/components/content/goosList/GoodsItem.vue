@@ -1,10 +1,10 @@
 <template>
   <div class="goods_item">
-     <img :src="goodsItem.image" alt="">
+     <img :src="goodsItem.img" alt="">
      <div class="goods_info">
        <p>{{goodsItem.title}}</p>
-       <span class="goods_acm">{{goodsItem.width}}</span>
-       <span class="goods_like">{{goodsItem.width923}}</span>
+       <span class="goods_acm">{{goodsItem.like}}</span>
+       <span class="goods_like">{{goodsItem.acm}}</span>
      </div>
   </div>
 </template>
@@ -30,23 +30,29 @@
 
 
 </script>
-<style>
+<style scoped>
   .goods_item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding-bottom: 10px;
     position: relative;
-    width: 48%;
+    padding: 2px;
+    width: 50%;
   }
 
 
   .goods_item img {
-    widows: 100%;
+    width: 100%;
+    height: 150px;
     border-radius: 5px;
+
   }
 
   .goods_info {
     position: absolute;
     left: 0;
-    bottom: 4px;
+    bottom: 2px;
     font-size: 12px;
     text-align: center;
     overflow: hidden;
@@ -60,13 +66,6 @@
 
   }
 
-  /* .goods_info::after{
-    display: block;
-    content: "";
-    clear: both;
-    height: 0;
-    visibility: hidden;
 
-  } */
 
 </style>

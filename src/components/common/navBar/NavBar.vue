@@ -20,7 +20,7 @@ export default {
 
 
 </script>
-<style>
+<style scoped>
   .nav_bar {
      width: 100%;
      display: flex;
@@ -30,7 +30,11 @@ export default {
      top: 0;
      left: 0;
      right: 0;
-
+     z-index: 8;
+     text-align: center;
+      color: #fff;
+      background-color:#ff8198;
+      box-shadow: 0 -1px 1px rgba(100,100,100,.1);
 
 
   }
