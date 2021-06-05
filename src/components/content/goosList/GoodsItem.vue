@@ -1,6 +1,6 @@
 <template>
   <div class="goods_item">
-     <img :src="goodsItem.img" alt="">
+     <img :src="goodsItem.img" alt="你好" @load="loadmore">
      <div class="goods_info">
        <p>{{goodsItem.title}}</p>
        <span class="goods_acm">{{goodsItem.like}}</span>
@@ -18,6 +18,12 @@
        default(){
          return {}
        }
+     }
+   },
+   methods:{
+     loadmore(){
+       console.log(loadmore)
+       this.$bus.$emit('Itemloadmore')
      }
    }
 
