@@ -1,12 +1,15 @@
 <template>
     <div id="home">
       <nav-bar class="nav_conter"><div slot="conter">购物街</div></nav-bar>
+      <tab-control class="tabControl"
+      ref="tabComtrol"
+      :title="['流行','新款','精选']" v-show="isShowTab"></tab-control>
       <scroll class="content"
       ref="scroll"
       :probe-type='2'
       :pull-up-load='true'
-      @scroll="scrollBtn" @pullingUp="LoadMoar">
-        <home-swiper :banners=banners></home-swiper>
+      @scroll="scrollBtn" @pullingUp="loadMoar">
+        <home-swiper :banners=banners @imgLoadItem='imgLoadItem'></home-swiper>
         <home-recommed :recommend=recommend></home-recommed>
         <feature></feature>
         <tab-control class="tab_control" ref="tabComtrol" :title="['流行','新款','精选']"></tab-control>
@@ -58,7 +61,10 @@ export default{
         'sell':{page:0,list:[]},
       },
       curryIndex:0,
-      isBackTop:false
+      isBackTop:false,
+      taboffsetTop:0,
+      isShowTab:false,
+      saveY:0
 
 
 
@@ -73,14 +79,23 @@ export default{
 
 
  },
+ destroyed(){
+    console.log('homedestroyed')
+ },
+ activated(){
+    console.log('activated')
+    this.$refs.scroll.scrollTo(0,this.saveY,0)
+ },
+ deactivated(){
+    console.log('deactivated')
+    this.saveY=this.$refs.scroll.getScrollY()
+ },
  mounted(){
      const refresh=debounce(this.$refs.scroll.refresh,50)
     this.$bus.$on('Itemloadmore',()=>{
             console.log('----')
             refresh()
       })
-    console.log(this.$refs.tabComtrol.$el.offsetTop)
-
  },
  methods:{
   getHomeContent(){
@@ -90,7 +105,6 @@ export default{
             this.recommend=res.data.recommend.list
              })
   },
-
   //  getHomeGoods(type){
   //         const page=this.goods[type].page+1
   //         getHomeGoods(type,page).then(res=>{
@@ -100,14 +114,17 @@ export default{
   //             })
 
   //       },
-   LoadMoar(){
-        console.log('下拉加载更多')
-
-     },
+    loadMoar(){
+      console.log('加载更多')
+    },
+   imgLoadItem(){
+       this.taboffsetTop=this.$refs.tabComtrol.$el.offsetTop
+       console.log(this.taboffsetTop)
+   },
    getGoodsList(){
      getGoodsList().then(res=>{
        this.goods['pops'].list.push(...res.data.banner.list)
-       this.$refs.scroll.finishPullUp()
+      //  this.$refs.scroll.finishPullUp()
    })
    },
   //  ,
@@ -149,6 +166,7 @@ export default{
      scrollBtn(position){
        console.log(position)
        this.isBackTop=(-position.y)>500
+       this.isShowTab=(-position.y)>this.taboffsetTop
      }
 
 
@@ -207,5 +225,9 @@ export default{
    left: 0;
    right: 0;
 
+}
+.tabControl{
+  position: relative;
+  z-index: 4;
 }
 </style>

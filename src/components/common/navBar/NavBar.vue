@@ -27,14 +27,13 @@ export default {
      height:44px;
      line-height: 44px;
      position: fixed;
-     top: 0;
      left: 0;
-     right: 0;
-     z-index: 8;
+     top: 0;
+     z-index: 2;
      text-align: center;
-      color: #fff;
-      background-color:#ff8198;
-      box-shadow: 0 -1px 1px rgba(100,100,100,.1);
+    color: #fff;
+    background-color:#ff8198;
+    box-shadow: 0 -1px 1px rgba(100,100,100,.1);
 
 
   }

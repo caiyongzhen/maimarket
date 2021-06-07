@@ -17,7 +17,7 @@ export default {
   },
     pullUpLoad:{
       type:Boolean,
-      default:false
+      default:true
     }
   },
   data(){
@@ -35,7 +35,7 @@ export default {
      });
      this.scroll.on('scroll',(position)=>{
            this.$emit('scroll',position)
-     })
+     });
      if(this.pullUpLoad){
        this.scroll.on('pullingUp',()=>{
            this.$emit('pullingUp')
@@ -52,6 +52,9 @@ export default {
      },
      refresh(){
       this.scroll&&this.scroll.refresh()
+     },
+     getScrollY(){
+       return this.scroll? this.scroll.y:0
      }
 
 
