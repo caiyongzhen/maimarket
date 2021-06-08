@@ -83,11 +83,11 @@ export default{
     console.log('homedestroyed')
  },
  activated(){
-    console.log('activated')
+
     this.$refs.scroll.scrollTo(0,this.saveY,0)
  },
  deactivated(){
-    console.log('deactivated')
+
     this.saveY=this.$refs.scroll.getScrollY()
  },
  mounted(){
@@ -164,7 +164,7 @@ export default{
      },
 
      scrollBtn(position){
-       console.log(position)
+      //  console.log(position)
        this.isBackTop=(-position.y)>500
        this.isShowTab=(-position.y)>this.taboffsetTop
      }

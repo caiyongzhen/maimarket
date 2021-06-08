@@ -1,5 +1,5 @@
 <template>
-  <div class="goods_item">
+  <div class="goods_item" @click="itemClick">
      <img :src="goodsItem.img" alt="你好" @load="loadmore">
      <div class="goods_info">
        <p>{{goodsItem.title}}</p>
@@ -24,7 +24,18 @@
      loadmore(){
        console.log(loadmore)
        this.$bus.$emit('Itemloadmore')
+     },
+     itemClick(){
+       console.log('---')
+       this.$router.push('/detail/'+111)
+
+
+
      }
+
+
+
+
    }
 
 
