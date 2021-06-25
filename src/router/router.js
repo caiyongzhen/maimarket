@@ -18,6 +18,7 @@ const Detail=()=>import('../views/detail/Detail.vue')
 
 
 
+
 const routes=[
     {
         path:'',
@@ -43,9 +44,10 @@ const routes=[
        component:Profile
      },
      {
-       path:'/detail/:id',
-       components:Detail
-     }
+      path:'/detail/:id',
+      component:Detail
+    }
+
 ]
 
 

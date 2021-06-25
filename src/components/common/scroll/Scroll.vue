@@ -41,7 +41,7 @@ export default {
            this.$emit('pullingUp')
      })
      }
-     console.log(this.scroll)
+    //  console.log(this.scroll)
   },
   methods:{
      scrollTo(x,y,time=500){

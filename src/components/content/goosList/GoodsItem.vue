@@ -27,7 +27,7 @@
      },
      itemClick(){
        console.log('---')
-       this.$router.push('/detail/'+111)
+       this.$router.push('/detail/1212')
 
 
 
